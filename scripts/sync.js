@@ -25,8 +25,15 @@ const ZONE_ID = process.env.CLOUDFLARE_ZONE_ID;
 const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
 const LIST_ID = process.env.CLOUDFLARE_LIST_ID;
 
-if (!CF_TOKEN || !ZONE_ID || !ACCOUNT_ID || !LIST_ID) {
-  console.error("❌ Error: Missing Cloudflare environment variables.");
+const missingVars = [];
+if (!CF_TOKEN) missingVars.push('CLOUDFLARE_API_TOKEN');
+if (!ZONE_ID) missingVars.push('CLOUDFLARE_ZONE_ID');
+if (!ACCOUNT_ID) missingVars.push('CLOUDFLARE_ACCOUNT_ID');
+if (!LIST_ID) missingVars.push('CLOUDFLARE_LIST_ID');
+
+if (missingVars.length > 0) {
+  console.error(`❌ Error: Missing the following environment variables: ${missingVars.join(', ')}`);
+  console.error('👉 Please check your .github/workflows/deploy.yml "env" section and GitHub Secrets.');
   process.exit(1);
 }
 
