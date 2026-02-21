@@ -1,0 +1,10 @@
+{
+  "description": "Test",
+  "type": "A",
+  "cname": "1.2.3.4",
+  "proxied": true, 
+  "owner": {
+    "username": "admin",
+    "email": "admin@is-a.page"
+  }
+}
