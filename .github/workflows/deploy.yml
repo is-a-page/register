@@ -1,0 +1,42 @@
+name: Deploy is-a.page DNS
+
+on:
+  push:
+    branches:
+      - main
+    # 当以下路径的文件发生变化时触发 Action
+    paths:
+      - 'domains/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/deploy.yml'
+
+jobs:
+  sync-dns:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 检出代码
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # 2. 设置 Node.js 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm' # 利用 package-lock.json 加速安装
+
+      # 3. 安装依赖 (使用 npm ci 保证版本确定性)
+      - name: Install Dependencies
+        run: npm ci
+
+      # 4. 运行同步脚本，并注入所有 Secrets
+      - name: Run Sync Script
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CLOUDFLARE_LIST_ID: ${{ secrets.CF_LIST_ID }}
+          KEYWORD_BLOCKLIST: ${{ secrets.KEYWORD_BLOCKLIST }}
+        run: npm run sync
