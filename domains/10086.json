@@ -1,0 +1,10 @@
+{
+  "description": "my blog",
+  "type": "CNAME",
+  "cname": "personblog-pink.vercel.app",
+  "proxied": true,
+  "owner": {
+    "username": "jifengjh",
+    "email": "1960174071@qq.com"
+  }
+}
