@@ -1,0 +1,10 @@
+{
+	"description": "This is a page. 😎",
+	"type": "CNAME",
+	"cname": "this-is-a-page.foo.gv.uy",
+	"proxied": false, 
+	"owner": {
+		"username": "guguan123",
+		"email": "j4fyfxqwn@mozmail.com"
+	}
+}
