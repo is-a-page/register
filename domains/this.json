@@ -1,7 +1,7 @@
 {
 	"description": "This is a page. 😎",
 	"type": "CNAME",
-	"cname": "this-is-a-page.foo.gv.uy",
+	"cname": "this-is-a-page.foo.netlib.re",
 	"proxied": false, 
 	"owner": {
 		"username": "guguan123",
