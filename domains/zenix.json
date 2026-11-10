@@ -1,0 +1,10 @@
+{
+  "description": "My personal site on GitHub Pages",
+  "type": "CNAME",
+  "cname": "zenix-live.github.io",
+  "proxied": false,
+  "owner": {
+    "username": "zenix-p",
+    "email": "zenix-platform@proton.me"
+  }
+}
